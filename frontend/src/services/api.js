@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const defaultBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const defaultBaseUrl =
+  import.meta.env.VITE_API_BASE_URL || "https://speak-with-zubi-1.onrender.com";
 
 const apiClient = axios.create({
   baseURL: defaultBaseUrl,

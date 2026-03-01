@@ -21,9 +21,11 @@ const localOriginPatterns = [/^http:\/\/localhost:\d+$/, /^http:\/\/127\.0\.0\.1
 
 const allowedOrigins = [...configuredOrigins, ...localOriginPatterns];
 
+const corsOrigin = configuredOrigins.length > 0 ? allowedOrigins : true;
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: corsOrigin,
     credentials: true,
   })
 );

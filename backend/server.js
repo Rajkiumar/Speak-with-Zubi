@@ -12,9 +12,18 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 
+const configuredOrigins = (process.env.FRONTEND_ORIGIN || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const localOriginPatterns = [/^http:\/\/localhost:\d+$/, /^http:\/\/127\.0\.0\.1:\d+$/];
+
+const allowedOrigins = [...configuredOrigins, ...localOriginPatterns];
+
 app.use(
   cors({
-    origin: [/^http:\/\/localhost:\d+$/, /^http:\/\/127\.0\.0\.1:\d+$/],
+    origin: allowedOrigins,
     credentials: true,
   })
 );

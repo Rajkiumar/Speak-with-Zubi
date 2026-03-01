@@ -1,40 +1,37 @@
-# Speak-with-Zubi
+# Speak-with-Zubi Frontend
 
-Real-time child-friendly AI conversation demo built with React (frontend-only).
+React + Vite frontend for the Speak-with-Zubi child interaction app.
 
-## What this project does
+## Live App
 
-- Lets you upload any child-friendly image.
-- Uses your object list to ask playful, safe questions.
-- Keeps interaction active for about one minute.
-- Triggers UI tool actions:
-	- `celebrate_child`
-	- `highlight_object`
+- https://speak-with-zubi-qdsn.vercel.app/
 
-## Run locally
-
-1. Install dependencies:
+## Local Development
 
 ```bash
 npm install
-```
-
-2. Start development server:
-
-```bash
 npm run dev
 ```
 
-3. Open the local URL shown by Vite.
+## Environment Variable
 
-## Browser notes
+Create `frontend/.env` (optional):
 
-- Use Chrome or Edge for best speech recognition support.
-- Click **Start Voice Play** to begin (browser mic permission required).
-- Add object names like `cat, tree, kite` before starting.
-- If speech recognition is unavailable, the app still speaks and allows typed input.
+```env
+VITE_API_BASE_URL=https://speak-with-zubi-1.onrender.com
+```
 
-## No backend needed
+If this variable is not set, the app uses the default configured base URL in `src/services/api.js`.
 
-- This app does not require any backend or LLM API key.
-- Conversation prompts are generated in-browser from object names you provide.
+## Build
+
+```bash
+npm run build
+```
+
+## Frontend Behavior
+
+- Uploads an image and sends it to backend for visual context.
+- Starts and continues a playful voice conversation.
+- Reacts to tool responses with celebration and object highlighting UI.
+
